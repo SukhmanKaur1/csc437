@@ -1,49 +1,48 @@
 body {
-    background-color: var(--color-background-page);
-    color: var(--color-text);
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  header {
-    background-color: var(--color-background-header);
-    color: var(--color-text-header);
-    text-align: center;
-    padding: 2rem 1rem;
-    border-bottom: 2px solid var(--color-accent);
-  }
-  
-  main {
-    padding: 2rem;
-  }
-  
-  h1, h2 {
-    color: var(--color-text);
-  }
-  
-  a {
-    color: var(--color-accent);
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  footer {
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
-    color: var(--color-text);
-  }
+  background-color: var(--color-background-page);
+  color: var(--color-text);
+  font-family: 'Lora', serif; /* updated for artsy body text */
+  margin: 0;
+  padding: 0;
+}
 
-  section {
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin: 1rem 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  
+header {
+  background-color: var(--color-background-header);
+  color: var(--color-text-header);
+  text-align: center;
+  padding: 2rem 1rem;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+main {
+  padding: 2rem;
+}
+
+h1, h2 {
+  color: var(--color-text);
+  font-family: 'Playfair Display', serif; /* updated for artsy headings */
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+section {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
