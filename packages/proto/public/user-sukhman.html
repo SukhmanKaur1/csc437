@@ -20,6 +20,10 @@
       Sukhman
     </h1>
     <p>Music profile and favorites</p>
+    <label>
+      <input type="checkbox" id="theme-toggle" autocomplete="off" />
+      Dark mode
+    </label>
   </header>
 
   <main>
@@ -69,5 +73,16 @@
   <footer>
     <p><a href="index.html">← Back to Home</a></p>
   </footer>
+
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    toggle.addEventListener('change', (event) => {
+      if (event.target.checked) {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.remove('dark-mode');
+      }
+    });
+  </script>
 </body>
 </html>
