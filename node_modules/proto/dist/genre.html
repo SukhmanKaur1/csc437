@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Genres</title>
+  <link rel="stylesheet" href="/styles/reset.css">
+  <link rel="stylesheet" href="/styles/tokens.css">
+  <link rel="stylesheet" href="/styles/page.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <h1>
+      <svg class="icon">
+        <use href="/icons/music.svg#icon-genre" />
+      </svg>
+      Genres
+    </h1>
+    <p>Explore some of the genres featured in this music collection.</p>
+    <label>
+      <input type="checkbox" id="theme-toggle" autocomplete="off" />
+      Dark mode
+    </label>
+  </header>
+
+  <main>
+    <section>
+      <h2>Available Genres</h2>
+      <ul>
+        <li><a href="artist-marias.html">Indie Pop – The Marías</a></li>
+        <li><a href="artist-badbunny.html">Reggaeton – Bad Bunny</a></li>
+        <li><a href="artist-seventeen.html">K-Pop – SEVENTEEN</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p><a href="index.html">← Back to Home</a></p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    toggle.addEventListener('change', (event) => {
+      if (event.target.checked) {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.remove('dark-mode');
+      }
+    });
+  </script>
+</body>
+</html>

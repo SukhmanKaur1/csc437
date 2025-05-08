@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User: Sukhman</title>
+  <link rel="stylesheet" href="/styles/reset.css">
+  <link rel="stylesheet" href="/styles/tokens.css">
+  <link rel="stylesheet" href="/styles/page.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <h1>
+      <svg class="icon">
+        <use href="/icons/music.svg#icon-user" />
+      </svg>
+      Sukhman
+    </h1>
+    <p>Music profile and favorites</p>
+    <label>
+      <input type="checkbox" id="theme-toggle" autocomplete="off" />
+      Dark mode
+    </label>
+  </header>
+
+  <main>
+    <section>
+      <h2>
+        <svg class="icon">
+          <use href="/icons/music.svg#icon-artist" />
+        </svg>
+        Favorite Artists
+      </h2>
+      <ul>
+        <li><a href="artist-marias.html">The Marías</a></li>
+        <li><a href="badbunny.html">Bad Bunny</a></li>
+        <li><a href="artist-seventeen.html">SEVENTEEN</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>
+        <svg class="icon">
+          <use href="/icons/music.svg#icon-genre" />
+        </svg>
+        Favorite Genres
+      </h2>
+      <ul>
+        <li><a href="genre.html">Indie Pop</a></li>
+        <li><a href="genre.html">Reggaeton</a></li>
+        <li><a href="genre.html">K-Pop</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>
+        <svg class="icon">
+          <use href="/icons/music.svg#icon-album" />
+        </svg>
+        Favorite Albums
+      </h2>
+      <ul>
+        <li><a href="album.html">Cinema</a></li>
+        <li><a href="album.html">Un Verano Sin Ti</a></li>
+        <li><a href="album.html">Face the Sun</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p><a href="index.html">← Back to Home</a></p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    toggle.addEventListener('change', (event) => {
+      if (event.target.checked) {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.remove('dark-mode');
+      }
+    });
+  </script>
+</body>
+</html>

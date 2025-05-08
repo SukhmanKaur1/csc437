@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Music Explorer - Users</title>
+  <link rel="stylesheet" href="/styles/reset.css">
+  <link rel="stylesheet" href="/styles/tokens.css" />
+  <link rel="stylesheet" href="/styles/page.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <h1>Users</h1>
+    <p>Select a user to explore their music preferences.</p>
+    <label class="dark-toggle">
+      <input type="checkbox" id="darkModeToggle" autocomplete="off" />
+      Dark Mode
+    </label>
+  </header>
+
+  <main>
+    <section>
+      <h2>
+        <svg class="icon">
+          <use href="/icons/music.svg#icon-user" />
+        </svg>
+        User Profiles
+      </h2>
+      <ul>
+        <li><a href="user-sukhman.html">Sukhman</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Music Explorer</p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('darkModeToggle');
+    toggle.addEventListener('change', (event) => {
+      document.body.classList.toggle('dark-mode', event.target.checked);
+    });
+  </script>
+</body>
+</html>

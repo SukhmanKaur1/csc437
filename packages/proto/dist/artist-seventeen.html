@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SEVENTEEN</title>
+  <link rel="stylesheet" href="/styles/reset.css">
+  <link rel="stylesheet" href="/styles/tokens.css">
+  <link rel="stylesheet" href="/styles/page.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <h1>
+      <svg class="icon">
+        <use href="/icons/music.svg#icon-artist" />
+      </svg>
+      SEVENTEEN
+    </h1>
+    <p>Genre: <a href="genre.html">K-Pop</a></p>
+    <label>
+      <input type="checkbox" id="theme-toggle" autocomplete="off" />
+      Dark mode
+    </label>
+  </header>
+
+  <main>
+    <section>
+      <h2>About</h2>
+      <p>SEVENTEEN is a South Korean boy band known for their powerful choreography, self-produced music, and 13-member team structure.</p>
+    </section>
+
+    <section>
+      <h2>Popular Albums</h2>
+      <ul>
+        <li><a href="album.html">Face the Sun</a></li>
+        <li><a href="album.html">FML</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Popular Songs</h2>
+      <ul>
+        <li>Super</li>
+        <li>HOT</li>
+        <li>Left & Right</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p><a href="index.html">← Back to Home</a></p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    toggle.addEventListener('change', (event) => {
+      if (event.target.checked) {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.remove('dark-mode');
+      }
+    });
+  </script>
+</body>
+</html>

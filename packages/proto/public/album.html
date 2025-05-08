@@ -22,47 +22,20 @@
   </header>
 
   <main>
-    <section>
-      <h2>
-        <svg class="icon">
-          <use href="/icons/music.svg#icon-album" />
-        </svg>
-        The Marías
-      </h2>
-      <ul>
-        <li>Cinema</li>
-        <li>Superclean Vol. I</li>
-      </ul>
-      <p><a href="artist-marias.html">← Back to The Marías</a></p>
-    </section>
+    <me-album artist="The Marías" href="artist-marias.html">
+      <li slot="album">Cinema</li>
+      <li slot="album">Superclean Vol. I</li>
+    </me-album>
 
-    <section>
-      <h2>
-        <svg class="icon">
-          <use href="/icons/music.svg#icon-album" />
-        </svg>
-        Bad Bunny
-      </h2>
-      <ul>
-        <li>Un Verano Sin Ti</li>
-        <li>YHLQMDLG</li>
-      </ul>
-      <p><a href="artist-badbunny.html">← Back to Bad Bunny</a></p>
-    </section>
+    <me-album artist="Bad Bunny" href="artist-badbunny.html">
+      <li slot="album">Un Verano Sin Ti</li>
+      <li slot="album">YHLQMDLG</li>
+    </me-album>
 
-    <section>
-      <h2>
-        <svg class="icon">
-          <use href="/icons/music.svg#icon-album" />
-        </svg>
-        SEVENTEEN
-      </h2>
-      <ul>
-        <li>Face the Sun</li>
-        <li>FML</li>
-      </ul>
-      <p><a href="artist-seventeen.html">← Back to SEVENTEEN</a></p>
-    </section>
+    <me-album artist="SEVENTEEN" href="artist-seventeen.html">
+      <li slot="album">Face the Sun</li>
+      <li slot="album">FML</li>
+    </me-album>
   </main>
 
   <footer>
@@ -79,5 +52,8 @@
       }
     });
   </script>
+
+  <script type="module" src="/src/album.js"></script>
+
 </body>
 </html>
