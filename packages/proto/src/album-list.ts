@@ -1,7 +1,7 @@
 // src/album-list.ts
 import { html, css, LitElement } from "lit";
 import { property, state } from "lit/decorators.js";
-import { define } from "@calpoly/mustang";
+import { define, Observer, Auth } from "@calpoly/mustang";
 
 interface AlbumData {
   artist: string;
@@ -11,17 +11,32 @@ interface AlbumData {
 
 class AlbumListElement extends LitElement {
   @property() src = "";
-
   @state() private albums: AlbumData[] = [];
+
+  private _authObserver = new Observer<Auth.Model>(this, "blazing:auth");
+  private _user?: Auth.User;
 
   connectedCallback() {
     super.connectedCallback();
-    if (this.src) this.loadData(this.src);
+    this._authObserver.observe((auth: Auth.Model) => {
+      this._user = auth.user;
+      if (this.src) this.loadData(this.src); // Reload when auth info arrives
+    });
+  }
+
+  get authorization() {
+    return (
+      this._user?.authenticated && {
+        Authorization: `Bearer ${(this._user as Auth.AuthenticatedUser).token}`
+      }
+    );
   }
 
   async loadData(url: string) {
     try {
-      const res = await fetch(url);
+      const res = await fetch(url, {
+        headers: this.authorization || {}
+      });
       if (!res.ok) throw new Error("Failed to fetch data");
       const json = await res.json();
       this.albums = json;
@@ -30,7 +45,7 @@ class AlbumListElement extends LitElement {
     }
   }
 
-  override render() {
+  render() {
     return html`
       ${this.albums.map(
         (item) => html`
@@ -47,6 +62,5 @@ class AlbumListElement extends LitElement {
   static styles = css``;
 }
 
-//Export this once — and define it once
 define({ "album-list": AlbumListElement });
 export { AlbumListElement };

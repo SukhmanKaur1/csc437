@@ -22,20 +22,7 @@
   </header>
 
   <main>
-    <me-album artist="The Marías" href="artist-marias.html">
-      <li slot="album">Cinema</li>
-      <li slot="album">Superclean Vol. I</li>
-    </me-album>
-
-    <me-album artist="Bad Bunny" href="artist-badbunny.html">
-      <li slot="album">Un Verano Sin Ti</li>
-      <li slot="album">YHLQMDLG</li>
-    </me-album>
-
-    <me-album artist="SEVENTEEN" href="artist-seventeen.html">
-      <li slot="album">Face the Sun</li>
-      <li slot="album">FML</li>
-    </me-album>
+    <album-list src="/api/albums"></album-list>
   </main>
 
   <footer>
@@ -53,7 +40,15 @@
     });
   </script>
 
-  <script type="module" src="/src/album.js"></script>
+  <script type="module">
+    import { define } from "@calpoly/mustang";
+    import { AlbumElement } from "/src/album.js";
+    import { AlbumListElement } from "/src/album-list.js";
 
+    define({
+      "me-album": AlbumElement,
+      "album-list": AlbumListElement
+    });
+  </script>
 </body>
 </html>

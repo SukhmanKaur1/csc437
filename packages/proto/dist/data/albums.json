@@ -1,0 +1,18 @@
+[
+    {
+      "artist": "The Marías",
+      "href": "artist-marias.html",
+      "albums": ["Cinema", "Superclean Vol. I"]
+    },
+    {
+      "artist": "Bad Bunny",
+      "href": "artist-badbunny.html",
+      "albums": ["Un Verano Sin Ti", "YHLQMDLG"]
+    },
+    {
+      "artist": "SEVENTEEN",
+      "href": "artist-seventeen.html",
+      "albums": ["Face the Sun", "FML"]
+    }
+  ]
+  
