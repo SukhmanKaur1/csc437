@@ -3,7 +3,7 @@
     --color-background-header: #b8c6db;
     --color-text: #3b3b3b;
     --color-text-header: #ffffff;
-    --color-accent: #c85f26;
+    --color-accent: #000000;
   }
   
   body.dark-mode {
@@ -13,4 +13,3 @@
     --color-text-header: #ffffff;
     --color-accent: #572307;
   }
-  

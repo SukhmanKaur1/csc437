@@ -37,8 +37,12 @@ class HeaderElement extends LitElement {
 
   private renderSignOutButton() {
     return html`
-      <button @click=${(e: Event) =>
-        Events.relay(e, "auth:message", ["auth/signout"])}>
+      <button
+        @click=${(e: Event) => {
+          Events.relay(e, "auth:message", ["auth/signout"]);
+          window.location.href = "/login.html";
+        }}
+      >
         Sign Out
       </button>
     `;

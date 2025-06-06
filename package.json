@@ -12,6 +12,7 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@types/cors": "^2.8.18"
+    "@types/cors": "^2.8.18",
+    "vite": "^6.3.5"
   }
 }
