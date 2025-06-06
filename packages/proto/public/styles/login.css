@@ -1,4 +1,5 @@
 body.page {
+  --color-text: black;
   background-color: var(--color-background-page);
   color: var(--color-text);
   font-family: 'Lora', serif;
@@ -8,6 +9,7 @@ body.page {
   align-items: center;
   padding: 2rem;
 }
+
 
 main.card {
   background-color: var(--color-background-header);
@@ -44,13 +46,13 @@ login-form label {
 login-form input {
   padding: 0.5rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid #f8f4f4;
   border-radius: 6px;
 }
 
 login-form button {
   background-color: var(--color-accent);
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: bold;
   padding: 0.75rem;
   border: none;
