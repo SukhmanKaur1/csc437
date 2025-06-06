@@ -3,15 +3,14 @@ import { html, css, LitElement } from "lit";
 import { property, state } from "lit/decorators.js";
 import { define } from "@calpoly/mustang";
 
-// Define the shape of the JSON data
 interface AlbumData {
   artist: string;
   href: string;
   albums: string[];
 }
 
-export class AlbumList extends LitElement {
-  @property() src = ""; // path to JSON file
+class AlbumListElement extends LitElement {
+  @property() src = "";
 
   @state() private albums: AlbumData[] = [];
 
@@ -48,4 +47,6 @@ export class AlbumList extends LitElement {
   static styles = css``;
 }
 
-define({ "album-list": AlbumList });
+//Export this once — and define it once
+define({ "album-list": AlbumListElement });
+export { AlbumListElement };

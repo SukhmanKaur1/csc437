@@ -22,36 +22,17 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var import_express = __toESM(require("express"));
+var import_albums = __toESM(require("./routes/albums"));
 var import_mongo = require("./services/mongo");
-var import_album_svc = __toESM(require("./services/album-svc"));
 (0, import_mongo.connect)("blazing");
 const app = (0, import_express.default)();
 const port = process.env.PORT || 3e3;
 const staticDir = process.env.STATIC || "public";
 app.use(import_express.default.static(staticDir));
+app.use(import_express.default.json());
+app.use("/api/albums", import_albums.default);
 app.get("/hello", (req, res) => {
   res.send("Hello, World");
-});
-app.get("/albums", (req, res) => {
-  import_album_svc.default.index().then((list) => {
-    res.set("Content-Type", "application/json").send(JSON.stringify(list));
-  }).catch((err) => {
-    console.error(err);
-    res.status(500).send("Internal Server Error");
-  });
-});
-app.get("/album/:artist", (req, res) => {
-  const { artist } = req.params;
-  import_album_svc.default.get(artist).then((data) => {
-    if (data) {
-      res.set("Content-Type", "application/json").send(JSON.stringify(data));
-    } else {
-      res.status(404).send("Album not found");
-    }
-  }).catch((err) => {
-    console.error(err);
-    res.status(500).send("Internal Server Error");
-  });
 });
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

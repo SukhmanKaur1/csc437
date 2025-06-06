@@ -38,4 +38,21 @@ function index() {
 function get(artist) {
   return AlbumModel.findOne({ artist }).exec();
 }
-var album_svc_default = { index, get };
+function create(json) {
+  const album = new AlbumModel(json);
+  return album.save();
+}
+function update(artist, updatedAlbum) {
+  return AlbumModel.findOneAndUpdate({ artist }, updatedAlbum, {
+    new: true
+  }).then((result) => {
+    if (!result) throw `${artist} not updated`;
+    return result;
+  });
+}
+function remove(artist) {
+  return AlbumModel.findOneAndDelete({ artist }).then((deleted) => {
+    if (!deleted) throw `${artist} not deleted`;
+  });
+}
+var album_svc_default = { index, get, create, update, remove };
