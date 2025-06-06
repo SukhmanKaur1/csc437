@@ -8,7 +8,10 @@
   },
   "author": "",
   "license": "ISC",
-   "workspaces": [
+  "workspaces": [
     "packages/*"
-   ]
+  ],
+  "devDependencies": {
+    "@types/cors": "^2.8.18"
+  }
 }

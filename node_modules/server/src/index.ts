@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import albums from "./routes/albums";
 import auth, { authenticateUser } from "./routes/auth";
 import { connect } from "./services/mongo";
+import cors from "cors";
+
 
 dotenv.config();
 connect("blazing");
@@ -14,6 +16,8 @@ const staticDir = process.env.STATIC || "public";
 
 app.use(express.static(staticDir));
 app.use(express.json());
+app.use(cors());
+
 
 // Mount authentication routes (e.g., /auth/register and /auth/login)
 app.use("/auth", auth);

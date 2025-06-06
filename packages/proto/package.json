@@ -17,9 +17,8 @@
     "lit": "^3.3.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.18",
     "typescript": "^5.8.3",
     "vite": "^6.3.5"
   }
 }
-
-
