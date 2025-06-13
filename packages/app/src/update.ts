@@ -1,4 +1,3 @@
-// src/update.ts
 import { Auth, Update } from "@calpoly/mustang";
 import { Msg } from "./messages";
 import { Model } from "./model";
@@ -18,9 +17,27 @@ export default function update(
         });
       break;
 
+    case "profile/save":
+      saveProfile(message[1], user)
+        .then((profile) => {
+          apply((model) => ({ ...model, profile }));
+        })
+        .then(() => {
+          const { onSuccess } = message[1];
+          if (onSuccess) onSuccess();
+        })
+        .catch((error: Error) => {
+          const { onFailure } = message[1];
+          if (onFailure) onFailure(error);
+        });
+      break;
+    case "album/select":
+    // No state change needed here unless you want to highlight an album
+       break;
 
     default:
-      throw new Error(`Unhandled message "${message[0]}"`);
+      const unhandled: never = message[0];
+      throw new Error(`Unhandled message "${unhandled}"`);
   }
 }
 
@@ -38,4 +55,26 @@ function loadProfile(
         return json;
       }
     });
+}
+
+function saveProfile(
+  payload: {
+    userid: string;
+    profile: Model["profile"];
+    onSuccess?: () => void;
+    onFailure?: (err: Error) => void;
+  },
+  user: Auth.User
+): Promise<Model["profile"]> {
+  return fetch(`/api/users/${payload.userid}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      ...Auth.headers(user)
+    },
+    body: JSON.stringify(payload.profile)
+  }).then((res) => {
+    if (res.status === 200) return res.json();
+    else throw new Error(`Failed to save profile for ${payload.userid}`);
+  });
 }
