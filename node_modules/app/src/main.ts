@@ -3,36 +3,33 @@ import { define, Auth, History, Switch, Store } from "@calpoly/mustang";
 
 import { HomeViewElement } from "./views/home-view";
 import { AlbumViewElement } from "./views/album-view";
-import { UserViewElement } from "./views/user-view"; // 👈 Added this
+import { UserViewElement } from "./views/user-view";
+import { ProfileEditElement } from "./views/profile-edit"; 
 import { LoginFormElement } from "./auth/login-form";
 
 import { Model, init } from "./model";
 import { Msg } from "./messages";
 import update from "./update";
 
-// Register custom elements
-customElements.define("home-view", HomeViewElement);
-customElements.define("album-view", AlbumViewElement);
-//customElements.define("user-view", UserViewElement); // 👈 Registered here
-customElements.define("login-form", LoginFormElement);
-
 // Define SPA routes
 const routes = [
   {
-    path: "/app/albums/:id",
+    path: "/app/profile/:userid/edit", 
     view: (params: Switch.Params) => html`
-      <album-view album-id=${params.id}></album-view>
+      <profile-edit userid=${params.userid}></profile-edit>
     `
   },
   {
-    path: "/app/user/:userid", // 👈 New route
+    path: "/app/user/:userid",
     view: (params: Switch.Params) => html`
       <user-view user-id=${params.userid}></user-view>
     `
   },
   {
-    path: "/app",
-    view: () => html`<home-view></home-view>`
+    path: "/app/albums/:id",
+    view: (params: Switch.Params) => html`
+      <album-view album-id=${params.id}></album-view>
+    `
   },
   {
     path: "/app/login",
@@ -57,6 +54,10 @@ const routes = [
     `
   },
   {
+    path: "/app",
+    view: () => html`<home-view></home-view>`
+  },
+  {
     path: "/",
     redirect: "/app"
   }
@@ -76,9 +77,10 @@ define({
     }
   },
 
-  // ✅ Register your custom views/components here
+  // Register your custom views/components here
   "user-view": UserViewElement,
   "home-view": HomeViewElement,
   "album-view": AlbumViewElement,
+  "profile-edit": ProfileEditElement, // ✅ REGISTERED HERE
   "login-form": LoginFormElement
 });
