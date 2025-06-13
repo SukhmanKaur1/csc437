@@ -29,6 +29,7 @@ var import_albums = __toESM(require("./routes/albums"));
 var import_auth = __toESM(require("./routes/auth"));
 var import_mongo = require("./services/mongo");
 var import_cors = __toESM(require("cors"));
+var import_users = __toESM(require("./routes/users"));
 import_dotenv.default.config();
 console.log("Loaded TOKEN_SECRET:", process.env.TOKEN_SECRET);
 (0, import_mongo.connect)("blazing");
@@ -40,6 +41,7 @@ app.use(import_express.default.json());
 app.use((0, import_cors.default)());
 app.use("/auth", import_auth.default);
 app.use("/api/albums", import_auth.authenticateUser, import_albums.default);
+app.use("/api/users", import_users.default);
 app.get("/hello", (req, res) => {
   res.send("Hello, World");
 });
