@@ -1,4 +1,4 @@
-// src/index.ts
+// server/src/index.ts
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import path from "path";
@@ -8,6 +8,7 @@ import albums from "./routes/albums";
 import auth, { authenticateUser } from "./routes/auth";
 import { connect } from "./services/mongo";
 import cors from "cors";
+import userRoutes from "./routes/users";
 
 dotenv.config();
 console.log("Loaded TOKEN_SECRET:", process.env.TOKEN_SECRET);
@@ -26,6 +27,7 @@ app.use(cors());
 // Routes
 app.use("/auth", auth);
 app.use("/api/albums", authenticateUser, albums);
+app.use("/api/users", userRoutes);
 
 // Optional test route
 app.get("/hello", (req: Request, res: Response) => {
