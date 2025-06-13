@@ -1,6 +1,6 @@
 # Music Library App — Final Project (CSC 437)
 
-Deployed site: https://skaur31.csse.dev/user-sukhman.html
+Deployed site: https://skaur31.csse.dev/
 
 ## About
 
