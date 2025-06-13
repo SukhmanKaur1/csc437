@@ -1,0 +1,15 @@
+:root {
+    --color-background-page: #f4f1ee;
+    --color-background-header: #b8c6db;
+    --color-text: #3b3b3b;
+    --color-text-header: #ffffff;
+    --color-accent: #000000;
+  }
+  
+  body.dark-mode {
+    --color-background-page: #1e1e1e;
+    --color-background-header: #2c2c2c;
+    --color-text: #f0f0f0;
+    --color-text-header: #ffffff;
+    --color-accent: #572307;
+  }

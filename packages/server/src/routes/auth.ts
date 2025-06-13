@@ -1,4 +1,3 @@
-// src/routes/auth.ts
 import dotenv from "dotenv";
 import express, { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
@@ -9,7 +8,14 @@ dotenv.config();
 
 const TOKEN_SECRET: string = process.env.TOKEN_SECRET || "NOT_A_SECRET";
 
-// Middleware to protect routes
+// Allow TypeScript to recognize req.user
+declare module "express-serve-static-core" {
+  interface Request {
+    user?: any;
+  }
+}
+
+// ✅ JWT middleware with logging
 export function authenticateUser(
   req: Request,
   res: Response,
@@ -18,16 +24,25 @@ export function authenticateUser(
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
 
+  console.log("🔐 Incoming token:", token);
+  console.log("🔐 TOKEN_SECRET from env:", TOKEN_SECRET);
+
   if (!token) {
+    console.warn("⚠️ No token provided");
     res.status(401).send("Unauthorized: No token provided");
   } else {
     jwt.verify(token, TOKEN_SECRET, (error, decoded) => {
-      if (decoded) next();
-      else res.status(403).send("Forbidden: Invalid token");
+      if (error || !decoded) {
+        console.error("❌ Token verification failed:", error?.message);
+        res.status(403).send("Forbidden: Invalid token");
+      } else {
+        console.log("✅ Token verified. User:", decoded);
+        req.user = decoded; // Attach the decoded payload (e.g., username)
+        next();
+      }
     });
   }
 }
-
 
 // Token generation helper
 function generateAccessToken(username: string): Promise<string> {
@@ -44,7 +59,7 @@ function generateAccessToken(username: string): Promise<string> {
   });
 }
 
-// POST /auth/register
+// Register route
 router.post("/register", (req: Request, res: Response) => {
   const { username, password } = req.body;
 
@@ -59,7 +74,7 @@ router.post("/register", (req: Request, res: Response) => {
   }
 });
 
-// POST /auth/login
+// Login route
 router.post("/login", (req: Request, res: Response) => {
   const { username, password } = req.body;
 

@@ -42,12 +42,21 @@ const TOKEN_SECRET = process.env.TOKEN_SECRET || "NOT_A_SECRET";
 function authenticateUser(req, res, next) {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
+  console.log("\u{1F510} Incoming token:", token);
+  console.log("\u{1F510} TOKEN_SECRET from env:", TOKEN_SECRET);
   if (!token) {
+    console.warn("\u26A0\uFE0F No token provided");
     res.status(401).send("Unauthorized: No token provided");
   } else {
     import_jsonwebtoken.default.verify(token, TOKEN_SECRET, (error, decoded) => {
-      if (decoded) next();
-      else res.status(403).send("Forbidden: Invalid token");
+      if (error || !decoded) {
+        console.error("\u274C Token verification failed:", error?.message);
+        res.status(403).send("Forbidden: Invalid token");
+      } else {
+        console.log("\u2705 Token verified. User:", decoded);
+        req.user = decoded;
+        next();
+      }
     });
   }
 }

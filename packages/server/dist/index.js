@@ -23,11 +23,14 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var import_express = __toESM(require("express"));
 var import_dotenv = __toESM(require("dotenv"));
+var import_path = __toESM(require("path"));
+var import_promises = __toESM(require("node:fs/promises"));
 var import_albums = __toESM(require("./routes/albums"));
 var import_auth = __toESM(require("./routes/auth"));
 var import_mongo = require("./services/mongo");
 var import_cors = __toESM(require("cors"));
 import_dotenv.default.config();
+console.log("Loaded TOKEN_SECRET:", process.env.TOKEN_SECRET);
 (0, import_mongo.connect)("blazing");
 const app = (0, import_express.default)();
 const port = process.env.PORT || 3e3;
@@ -39,6 +42,10 @@ app.use("/auth", import_auth.default);
 app.use("/api/albums", import_auth.authenticateUser, import_albums.default);
 app.get("/hello", (req, res) => {
   res.send("Hello, World");
+});
+app.use("/app", (req, res) => {
+  const indexHtml = import_path.default.resolve(staticDir, "index.html");
+  import_promises.default.readFile(indexHtml, "utf8").then((html) => res.send(html));
 });
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
