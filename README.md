@@ -1,1 +1,27 @@
-Music Library
+# Music Library App — Final Project (CSC 437)
+
+**Deployed site:** https://skaur31.csse.dev/
+
+## About
+
+This is a single-page music library app that lets users:
+
+- View albums, artists, and genres  
+- Toggle dark mode  
+- View a user profile  
+- Navigate between pages without reloading  
+
+> Note: The app currently loads the user profile list by default. A login screen is implemented, but not presently wired as the landing view. The current version does not support user login or signup. Profile data is static and presented for demonstration.
+
+## Technologies Used
+
+- Lit for web components  
+- Vite for building the frontend  
+- http-server to serve the site  
+- MVU architecture (with Mustang)  
+
+## Deployment
+
+- Built with: `npm run build -w proto`  
+- Deployed on port 3000 using: `nohup npm start -w proto &`  
+- Accessed through HTTPS via Nginx and csse.dev  
